@@ -21,7 +21,8 @@ export const updateStatus = async (req, res) => {
   if(!authName){
     res.status(404).send("User not found")
   }
-  userModal.updateOne({username: authName},{status: status});
+  await userModal.updateOne({ username: authName }, { status: status });
+  res.status(200).send("updated everything");
 };
 
 export const getStatus = async (req, res) => {
